@@ -1,6 +1,6 @@
-# barebone-webpack-template
+# es6-splash-page-template
 
-This is a simple template using Webpack to bundle.   
+This is a simple ES6 template for lightweight splash pages. It using Webpack to bundle the code.   
 
 The process includes 
 - SASS
@@ -11,13 +11,19 @@ The process includes
 To install the project
 
 `npm install`
+or
+`yarn install`
 
 To run the project
 
 `npm start`
+or
+`yarn start`
 
 To deploy the project
 
 `npm run deploy`
+or
+`yarn run deploy`
 
-The deployed version will be in the `dist` folder
+The deploy version will be in the `dist` folder
