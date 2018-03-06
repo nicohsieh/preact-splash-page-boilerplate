@@ -1,4 +1,5 @@
-import { h, render } from 'preact'
+import { h, render, Component } from 'preact'
+import '../style/main.scss'
 
 render((
     <div id="foo">

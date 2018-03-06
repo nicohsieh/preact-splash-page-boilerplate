@@ -66,7 +66,10 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [{
-          loader: 'style-loader'
+          loader: 'style-loader',
+          options: {
+            sourceMap: true
+          }
         }, {
           loader: 'css-loader',
           options: {
@@ -76,6 +79,13 @@ module.exports = {
           loader: 'sass-loader',
           options: {
             sourceMap: true
+          }
+        }, {
+          loader: 'postcss-loader',
+          options: {
+            plugins: (loader) => [
+              require('autoprefixer')()
+            ]
           }
         }]
       }
