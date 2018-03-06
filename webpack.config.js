@@ -9,7 +9,7 @@ const PATHS = {
 
 
 module.exports = {
-  entry: path.resolve(PATHS.source, 'js/main.js'),
+  entry: path.resolve(PATHS.source, 'js/index.js'),
   output: {
     path: PATHS.dist,
     filename: 'bundle.js',
@@ -33,7 +33,23 @@ module.exports = {
               '@babel/plugin-proposal-object-rest-spread'
             ]
           }
-        }]
+        },
+        {
+          test: /\.scss$/,
+          use: [{
+              loader: 'style-loader'
+          }, {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true
+              }
+          }, {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+          }]
+      }]
       }
     ]
   },
@@ -59,7 +75,7 @@ module.exports = {
   devServer: {
     contentBase: PATHS.dist,
     compress: true,
-    inline: false,
+    inline: true,
     port: 8000
   },
   devtool: 'source-map'
