@@ -9,7 +9,7 @@ const PATHS = {
 
 
 module.exports = {
-  entry: path.resolve(PATHS.source, 'js/index.js'),
+  entry: path.resolve(PATHS.source, 'js/main.js'),
   output: {
     path: PATHS.dist,
     filename: 'bundle.js',
@@ -20,37 +20,38 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules\//,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            "presets": [
-              ["@babel/preset-env", {
-                "loose": true
-              }]
-            ],
-            plugins: [
-              '@babel/plugin-proposal-class-properties',
-              '@babel/plugin-proposal-object-rest-spread'
-            ]
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              "presets": [
+                ["@babel/preset-env", {
+                  "loose": true
+                }]
+              ],
+              plugins: [
+                '@babel/plugin-proposal-class-properties',
+                '@babel/plugin-proposal-object-rest-spread'
+              ]
+            }
           }
-        },
+        ]},
         {
           test: /\.scss$/,
           use: [{
-              loader: 'style-loader'
+            loader: 'style-loader'
           }, {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
           }, {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
           }]
-      }]
-      }
+        }
     ]
   },
   resolve: {
