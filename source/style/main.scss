@@ -2,3 +2,18 @@
   box-sizing: border-box;
 }
 
+body {
+  div {
+    background-color: yellow;
+    display: flex;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .border::before {
+    content: 'hello~~';
+    position: absolute;
+    top: 20px;
+
+    border-radius: 5px;
+  }
+}

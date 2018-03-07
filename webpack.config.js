@@ -2,36 +2,11 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const isProduction = (process.env.NODE_ENV === 'production')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const PATHS = {
   dist: path.resolve(__dirname, 'dist'),
   source: path.resolve(__dirname, 'source')
-}
-
-
-function getPlugins() {
-  const plugins = []
-  const copyPlugin = new CopyWebpackPlugin([
-    {
-      from: path.resolve(PATHS.source, 'index.html'),
-      to: PATHS.dist,
-      flatten: true
-    },
-    {
-      from: path.resolve(PATHS.source, 'images/*'),
-      to: path.resolve(PATHS.dist, 'images'),
-      flatten: true
-    }
-  ])
-  plugins.push(copyPlugin)
-
-  if (isProduction) {
-    const uglifyPlugin = new webpack.optimize.UglifyJsPlugin({
-      test: /\.js($|\?)/i
-    })
-    plugins.push(uglifyPlugin)
-  }
-  return plugins
 }
 
 module.exports = {
@@ -96,7 +71,20 @@ module.exports = {
       'node_modules'
     ]
   },
-  plugins: getPlugins(),
+  plugins: [
+    new CopyWebpackPlugin([
+      {
+        from: path.resolve(PATHS.source, 'index.html'),
+        to: PATHS.dist,
+        flatten: true
+      },
+      {
+        from: path.resolve(PATHS.source, 'images/*'),
+        to: path.resolve(PATHS.dist, 'images'),
+        flatten: true
+      }
+    ])
+  ],
   devServer: {
     contentBase: PATHS.dist,
     compress: true,
