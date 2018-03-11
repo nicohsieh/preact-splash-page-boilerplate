@@ -1,13 +1,20 @@
+// this config file contains the shared definition between dev and prod
 const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const isProduction = (process.env.NODE_ENV === 'production')
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const PATHS = {
   dist: path.resolve(__dirname, 'dist'),
   source: path.resolve(__dirname, 'source')
 }
+
+// bring in custom config 
+
+const customConfig = isProduction ? require('./webpack.config.prod') : require('./webpack.config.dev')
+const customRules = customConfig.getRules()
+const customPlugins = customConfig.getPlugins(PATHS)
+
 
 module.exports = {
   entry: path.resolve(PATHS.source, 'js/main.js'),
@@ -38,32 +45,7 @@ module.exports = {
           }
         ]
       },
-      {
-        test: /\.scss$/,
-        use: [{
-          loader: 'style-loader',
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'sass-loader',
-          options: {
-            sourceMap: true
-          }
-        }, {
-          loader: 'postcss-loader',
-          options: {
-            plugins: (loader) => [
-              require('autoprefixer')()
-            ]
-          }
-        }]
-      }
+      ...customRules
     ]
   },
   resolve: {
@@ -79,11 +61,19 @@ module.exports = {
         flatten: true
       },
       {
-        from: path.resolve(PATHS.source, 'images/*'),
-        to: path.resolve(PATHS.dist, 'images'),
+        from: path.resolve(PATHS.source, 'assets/images/'),
+        to: path.resolve(PATHS.dist, 'assets/images'),
+        ignore: ['.gitkeep'],
+        flatten: true
+      },
+      {
+        from: path.resolve(PATHS.source, 'assets/fonts/'),
+        to: path.resolve(PATHS.dist, 'assets/fonts'),
+        ignore: ['.gitkeep'],
         flatten: true
       }
-    ])
+    ]),
+    ...customPlugins
   ],
   devServer: {
     contentBase: PATHS.dist,
@@ -91,5 +81,5 @@ module.exports = {
     inline: true,
     port: 8000
   },
-  devtool: 'cheap-source-map'
+  devtool: 'cheap-source-map',
 }
