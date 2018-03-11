@@ -1,6 +1,7 @@
 // this config file contains the shared definition between dev and prod
 const path = require('path')
 const webpack = require('webpack')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const isProduction = (process.env.NODE_ENV === 'production')
 
@@ -54,12 +55,11 @@ module.exports = {
     ]
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'source/index.html'
+    }),
     new CopyWebpackPlugin([
-      {
-        from: path.resolve(PATHS.source, 'index.html'),
-        to: PATHS.dist,
-        flatten: true
-      },
       {
         from: path.resolve(PATHS.source, 'assets/images/'),
         to: path.resolve(PATHS.dist, 'assets/images'),
