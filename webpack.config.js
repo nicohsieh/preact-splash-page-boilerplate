@@ -60,6 +60,10 @@ module.exports = {
         to: path.resolve(PATHS.dist, 'assets/fonts'),
         ignore: ['.gitkeep'],
         flatten: true
+      },
+      {
+        from: path.resolve(PATHS.source, 'favicon.ico'),
+        to: PATHS.dist
       }
     ]),
     ...customPlugins
