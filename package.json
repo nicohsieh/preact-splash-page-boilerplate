@@ -1,5 +1,5 @@
 {
-  "name": "es6-splash-page-template",
+  "name": "preact-splash-page-boilerplate",
   "version": "1.0.0",
   "description": "This is a simple template using Webpack to bundle.",
   "main": "index.html",
@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nicohsieh/barebone-webpack-template.git"
+    "url": "git+https://github.com/nicohsieh/preact-splash-page-boilerplate.git"
   },
   "author": "Nico Hsieh",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nicohsieh/barebone-webpack-template/issues"
+    "url": "https://github.com/nicohsieh/preact-splash-page-boilerplate/issues"
   },
-  "homepage": "https://github.com/nicohsieh/barebone-webpack-template#readme",
+  "homepage": "https://github.com/nicohsieh/preact-splash-page-boilerplate#readme",
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.40",
     "@babel/core": "^7.0.0-beta.40",
