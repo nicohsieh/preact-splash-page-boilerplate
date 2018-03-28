@@ -41,6 +41,7 @@ npm install
 
 ###  To run the project for development
 
+
 Start a webpack dev server at `:8000`
 
 ```sh
@@ -49,7 +50,9 @@ npm start
 
 <br />
 
+
 ###  To build the project for production
+
 
 Build production code into `dist` folder
 
@@ -72,3 +75,4 @@ npm run start:dist
 ### License
 
 MIT
+
