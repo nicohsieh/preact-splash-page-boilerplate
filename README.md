@@ -1,29 +1,78 @@
-# es6-splash-page-template
+# Preact Splash Page Boilerplate
 
-This is a simple ES6 template for lightweight splash pages. It using Webpack to bundle the code.   
+🕊️ This is a simple light weight boilerplate with Preact and powered by Webpack. It aims for static splash pages or social bounce pages that need to be very light and don't require complexity like routes or global states. The out of box compiled js from the boilerplate is 11k, including Preact and the demo components. 
 
-The process includes 
-- SASS
-- Babel (ES6 transpile)
+<br />
 
+This boilerplate includes:
+
+- [Preact](https://preactjs.com/) (chosen for the small k size)
+-  [Babel](https://babeljs.io/) (ES6 and JSX transpile)
+- [SASS](https://sass-lang.com/)
+- [Autoprefixer](https://github.com/postcss/autoprefixer)
+- [BundleAnalyzer](https://www.npmjs.com/package/webpack-bundle-analyzer) when build
+<br />
 ---
 
-To install the project
+## Start Guide
 
-`npm install`
-or
-`yarn install`
+### To install the project
 
-To run the project
+Clone the project and go into the directory
 
-`npm start`
-or
-`yarn start`
+```sh
+git clone my-splash-page
+cd my-splash-page
+```
 
-To deploy the project
+Make it yours!
 
-`npm run deploy`
-or
-`yarn run deploy`
+```sh
+rm -rf .git && git init && npm init
+```
 
-The deploy version will be in the `dist` folder
+
+Install the dependencies
+
+```sh
+npm install
+```
+<br />
+
+###  To run the project for development
+
+
+Start a webpack dev server at `:8000`
+
+```sh
+npm start
+```
+
+<br />
+
+
+###  To build the project for production
+
+
+Build production code into `dist` folder
+
+(It also starts BundleAnalyzer for you to spot possible optimization)
+
+```sh
+npm run build
+```
+
+
+Start a local server at `dist` folder at `:8080` to check the build
+
+```sh
+npm run start:dist
+```
+
+
+
+---
+### License
+
+MIT
+

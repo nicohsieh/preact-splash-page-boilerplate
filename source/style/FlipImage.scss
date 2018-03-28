@@ -1,0 +1,15 @@
+.flip-image {
+  width: 350px;
+  max-width: 90vw;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: auto;
+    transition: .3s transform ease-out;
+  }
+
+  &.flipped img {
+    transform: rotateY(180deg);
+  }
+}
