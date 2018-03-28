@@ -22,7 +22,7 @@ This boilerplate includes:
 Clone the project and go into the directory
 
 ```sh
-git clone my-splash-page
+git clone https://github.com/nicohsieh/preact-splash-page-boilerplate.git my-splash-page
 cd my-splash-page
 ```
 
