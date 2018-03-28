@@ -26,3 +26,10 @@ The boilerplate includes
 `npm run build`
 
 The deployed version will be in the `dist` folder
+
+#### To check the build version
+
+`npm run start:dist`
+
+This starts a local server at `dist` folder at `:8080`
+
