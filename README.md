@@ -17,7 +17,7 @@ This boilerplate includes:
 
 ## Start Guide
 
-### To install the project
+### Installation
 
 Clone the project and go into the directory
 
@@ -40,7 +40,7 @@ npm install
 ```
 <br />
 
-###  To run the project for development
+###  Development
 
 
 Start a webpack dev server at `:8000`
@@ -48,11 +48,6 @@ Start a webpack dev server at `:8000`
 ```sh
 npm start
 ```
-
-<br />
-
-
-###  To build the project for production
 
 
 Build production code into `dist` folder
