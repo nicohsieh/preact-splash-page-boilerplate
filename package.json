@@ -14,7 +14,7 @@
     "url": "git+https://github.com/nicohsieh/preact-splash-page-boilerplate.git"
   },
   "author": "Nico Hsieh",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nicohsieh/preact-splash-page-boilerplate/issues"
   },
