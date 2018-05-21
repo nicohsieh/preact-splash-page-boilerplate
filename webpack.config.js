@@ -18,7 +18,7 @@ const customPlugins = customConfig.getPlugins(PATHS)
 
 
 module.exports = {
-  entry: path.resolve(PATHS.source, 'js/main.js'),
+  entry: path.resolve(PATHS.source, 'js/index.js'),
   output: {
     path: PATHS.dist,
     filename: 'bundle.js',
@@ -34,6 +34,10 @@ module.exports = {
             loader: 'babel-loader'
           }
         ]
+      },
+      {
+      test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       },
       ...customRules
     ]
@@ -66,13 +70,17 @@ module.exports = {
         to: PATHS.dist
       }
     ]),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
     ...customPlugins
   ],
   devServer: {
     contentBase: PATHS.dist,
     compress: true,
     inline: true,
-    port: 8000
+    port: 8000,
+    host: '0.0.0.0',
+    hot: true
   },
   devtool: 'cheap-source-map',
 }
