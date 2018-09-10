@@ -12,16 +12,15 @@ const getRules = () => {
       use: [{
         loader: 'css-loader',
         options: {
-          sourceMap: true,
+          sourceMap: false,
           minimize: true
         }
       }, {
         loader: 'sass-loader',
         options: {
-          sourceMap: true
+          sourceMap: false
         }
-      }
-        , {
+      }, {
         loader: 'postcss-loader',
         options: {
           plugins: (loader) => [
@@ -30,6 +29,19 @@ const getRules = () => {
         }
       }
       ]
+    })
+  }, {
+    test: /\.css$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [{
+        loader: 'css-loader',
+        options: {
+          sourceMap: false,
+          minimize: true,
+          url: false
+        }
+      }]
     })
   }]
 }
@@ -41,7 +53,7 @@ const getPlugins = () => {
     new webpack.optimize.UglifyJsPlugin({
       test: /\.js($|\?)/i
     }),
-    new ExtractTextPlugin('styles.css'),
+    new ExtractTextPlugin('styles.[hash].css'),
     new BundleAnalyzerPlugin()
   ]
 }

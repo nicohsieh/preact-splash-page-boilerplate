@@ -6,12 +6,12 @@ const getRules = () => {
       use: [{
         loader: 'style-loader',
         options: {
-          sourceMap: false
+          sourceMap: true
         }
       }, {
         loader: 'css-loader',
         options: {
-          sourceMap: false
+          sourceMap: true
         }
       }, {
         loader: 'sass-loader',
@@ -24,6 +24,20 @@ const getRules = () => {
           plugins: (loader) => [
             require('autoprefixer')()
           ]
+        }
+      }]
+    }, {
+      test: /\.css$/,
+      use: [{
+        loader: 'style-loader',
+        options: {
+          sourceMap: true
+        }
+      }, {
+        loader: 'css-loader',
+        options: {
+          sourceMap: true,
+          url: false
         }
       }]
     }

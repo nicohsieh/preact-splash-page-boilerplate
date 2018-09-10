@@ -21,7 +21,7 @@ module.exports = {
   entry: path.resolve(PATHS.source, 'js/index.js'),
   output: {
     path: PATHS.dist,
-    filename: 'bundle.js',
+    filename: 'bundle.[hash].js',
     chunkFilename: '[name].js'
   },
   module: {
