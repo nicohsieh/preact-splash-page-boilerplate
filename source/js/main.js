@@ -11,4 +11,4 @@ render((
         <FlipImage src='assets/images/duck.jpg' />
         <CTA word='Click Me!' />
     </div>
-), document.body)
+), document.querySelector('#root'))
