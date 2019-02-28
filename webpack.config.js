@@ -3,27 +3,26 @@ const path = require('path')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const isProduction = (process.env.NODE_ENV === 'production')
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+
+const devConfig = require('./webpack.config.dev')
+const prodConfig = require('./webpack.config.prod')
 
 const PATHS = {
   dist: path.resolve(__dirname, 'dist'),
   source: path.resolve(__dirname, 'source')
 }
 
-// bring in custom config 
-
-const customConfig = isProduction ? require('./webpack.config.prod') : require('./webpack.config.dev')
-const customRules = customConfig.getRules()
-const customPlugins = customConfig.getPlugins(PATHS)
-
-
-module.exports = {
+const config = {
   entry: path.resolve(PATHS.source, 'js/index.js'),
   output: {
     path: PATHS.dist,
     filename: 'bundle.[hash].js',
     chunkFilename: '[name].js'
   },
+  // optimization: {
+  //   // minimizer: [new OptimizeCSSAssetsPlugin({})]
+  // },
   module: {
     rules: [
       {
@@ -38,8 +37,7 @@ module.exports = {
       {
       test: /\.css$/,
         use: ['style-loader', 'css-loader']
-      },
-      ...customRules
+      }
     ]
   },
   resolve: {
@@ -72,7 +70,6 @@ module.exports = {
     ]),
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    ...customPlugins
   ],
   devServer: {
     contentBase: PATHS.dist,
@@ -83,4 +80,16 @@ module.exports = {
     hot: true
   },
   devtool: 'cheap-source-map',
+}
+
+module.exports =  (env, argv) => {
+  const isProduction = argv.mode === 'production'
+  const customConfig = isProduction ? prodConfig : devConfig
+  const customRules = customConfig.getRules()
+  const customPlugins = customConfig.getPlugins(PATHS)
+
+  config.module.rules = [...config.module.rules, ...customRules]
+  config.plugins = [...config.plugins, ...customPlugins]
+
+  return config
 }
