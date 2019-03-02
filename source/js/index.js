@@ -3,24 +3,22 @@ import App from './App'
 
 import '../style/main.scss'
 
-
 const container = document.querySelector('#root')
 
 function renderApp() {
-  const app = (<App />)
-  render(app, container)
+	const app = <App />
+	render(app, container)
 }
 
 renderApp()
 
 // Set up HMR re-rendering.
 if (module.hot) {
-
-  //module.hot.accept()
-  module.hot.accept('./App.js', () => {
-    if (container.firstElementChild) {
-      container.removeChild(container.firstElementChild)
-    }
-    renderApp()
-  })
+	//module.hot.accept()
+	module.hot.accept('./App.js', () => {
+		if (container.firstElementChild) {
+			container.removeChild(container.firstElementChild)
+		}
+		renderApp()
+	})
 }
