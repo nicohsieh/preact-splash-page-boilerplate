@@ -1,12 +1,11 @@
 # Preact Splash Page Boilerplate
 
-🕊️ This is a simple light weight boilerplate with Preact and powered by Webpack. It aims for static splash pages or social bounce pages that need to be very light and don't require complexity like routes or global states. The out of box compiled js from the boilerplate is 11k, including Preact and the demo components.
-
+🕊️ This is a simple light weight boilerplate with Preact and powered by Webpack. It aims for static splash pages or social bounce pages that need to be very light and don't require complexity like routes or global states.
 <br />
 
 This boilerplate includes:
 
-- [Preact](https://preactjs.com/) (chosen for the small k size)
+- [Preact](https://preactjs.com/) (chosen for the small lib size)
 - [Babel](https://babeljs.io/) (ES6 and JSX transpile)
 - [SASS](https://sass-lang.com/)
 - [Autoprefixer](https://github.com/postcss/autoprefixer)
@@ -48,8 +47,6 @@ npm start
 ```
 
 Build production code into `dist` folder
-
-(It also starts BundleAnalyzer for you to spot possible optimization)
 
 ```sh
 npm run build
