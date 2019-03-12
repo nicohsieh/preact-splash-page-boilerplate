@@ -15,9 +15,7 @@ const getRules = () => {
 		},
 		{
 			loader: 'postcss-loader',
-			options: {
-				plugins: loader => [require('autoprefixer')()],
-			},
+			test: /\.css$/,
 		},
 	]
 }
@@ -28,7 +26,6 @@ const getPlugins = () => {
 		new MiniCssExtractPlugin({
 			filename: '[name]-[hash].css',
 		}),
-		new BundleAnalyzerPlugin(),
 	]
 }
 
