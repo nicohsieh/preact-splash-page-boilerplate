@@ -24,9 +24,6 @@ const getRules = () => {
 				},
 				{
 					loader: 'postcss-loader',
-					options: {
-						plugins: loader => [require('autoprefixer')()],
-					},
 				},
 			],
 		},
