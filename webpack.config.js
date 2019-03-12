@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 const devConfig = require('./webpack.config.dev')
 const prodConfig = require('./webpack.config.prod')
@@ -20,9 +21,9 @@ const config = {
 		filename: 'bundle.[hash].js',
 		chunkFilename: '[name].js',
 	},
-	// optimization: {
-	//   // minimizer: [new OptimizeCSSAssetsPlugin({})]
-	// },
+	optimization: {
+		minimizer: [new UglifyJsPlugin(), new OptimizeCSSAssetsPlugin({})],
+	},
 	module: {
 		rules: [
 			{

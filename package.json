@@ -41,6 +41,7 @@
     "postcss-preset-env": "^6.6.0",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.20.3",
+    "uglifyjs-webpack-plugin": "^2.1.2",
     "webpack": "^4.29.6",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
